@@ -1,4 +1,7 @@
-package com.bankholiday;
+package com.bankholiday.holiday.percountry;
+
+import com.bankholiday.holiday.CelebratesEaster;
+import com.bankholiday.holiday.IsKnownHoliday;
 
 import java.time.LocalDate;
 

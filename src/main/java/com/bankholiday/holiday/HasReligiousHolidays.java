@@ -1,4 +1,4 @@
-package com.bankholiday;
+package com.bankholiday.holiday;
 
 import java.time.LocalDate;
 import java.util.Set;

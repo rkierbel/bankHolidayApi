@@ -1,4 +1,7 @@
-package com.bankholiday;
+package com.bankholiday.util;
+
+import com.bankholiday.holiday.HasReligiousHolidays;
+import com.bankholiday.holiday.IsKnownHoliday;
 
 import java.time.LocalDate;
 import java.util.Arrays;

@@ -1,8 +1,8 @@
-package com.bankholiday;
+package com.bankholiday.holiday;
 
 import java.time.LocalDate;
 
-interface IsKnownHoliday {
+public interface IsKnownHoliday {
 
   LocalDate date(int year);
   IsKnownHoliday[] values();
