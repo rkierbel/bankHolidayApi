@@ -2,13 +2,6 @@ package com.bankholiday;
 
 import java.time.LocalDate;
 
-/**
- * Each constant corresponds to a Holiday.<br>
- * Each constant is built using the month and day of the holiday.<br>
- * Adding the year, this constitutes the Holiday date (in format LocalDate).<br>
- * The year is passed dynamically so full dates can be adapted,<br>
- * to create a list of yearly holidays at run time for an instance of {@link HolidayGenerator}<br>
- */
 public enum BelgianHoliday implements IsKnownCountry, CelebratesEaster {
   NEW_YEAR(1, 1),
   LABOUR_DAY(5, 1),

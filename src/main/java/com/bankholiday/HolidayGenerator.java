@@ -9,12 +9,6 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-/**
- * PublicHolidayHelper is statically generated for the current year upon class first instantiation.<br>
- * The list of allHolidays for a given year is created streaming over {@link HolidayGenerator} enum constants.<br>
- * PublicHolidayHelper for a given year is mapped to the appropriate year as int.<br>
- * If a PublicHolidayHelper for a given exists, it is simply retrieved based on the year passed to getInstance().<br>
- */
 public final class HolidayGenerator {
 
   Set<LocalDate> generateHolidays(IsKnownCountry country, int year) {
