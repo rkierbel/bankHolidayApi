@@ -11,30 +11,30 @@ public class HolidayFinder {
 
   public static boolean
   isAPublicHolidayEve(IsKnownHoliday perCountry,
-                      LocalDateTime serviceDateTime) {
+                      LocalDateTime forDateTime) {
 
     return findPublicHoliday(
             perCountry,
-            serviceDateTime.toLocalDate().atStartOfDay().plusDays(1))
+            forDateTime.toLocalDate().atStartOfDay().plusDays(1))
             .isPresent();
   }
 
   public static boolean
   isAPublicHoliday(IsKnownHoliday perCountry,
-                   LocalDateTime serviceDateTime) {
-    Optional<LocalDate> aPublicHoliday = findPublicHoliday(perCountry, serviceDateTime);
+                   LocalDateTime forDateTime) {
+    Optional<LocalDate> aPublicHoliday = findPublicHoliday(perCountry, forDateTime);
 
     return aPublicHoliday.isPresent();
   }
 
   public static Optional<LocalDate>
   findPublicHoliday(IsKnownHoliday perCountry,
-                    LocalDateTime serviceDateTime) {
+                    LocalDateTime forDateTime) {
 
     return HolidayGenerator.generateHolidays(
-                    perCountry, serviceDateTime.getYear())
+                    perCountry, forDateTime.getYear())
             .stream()
-            .filter(holiday -> serviceDateTime.toLocalDate().equals(holiday))
+            .filter(holiday -> forDateTime.toLocalDate().equals(holiday))
             .findFirst();
   }
 }
