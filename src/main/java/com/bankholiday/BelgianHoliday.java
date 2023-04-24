@@ -2,7 +2,7 @@ package com.bankholiday;
 
 import java.time.LocalDate;
 
-public enum BelgianHoliday implements IsKnownCountry, CelebratesEaster {
+public enum BelgianHoliday implements IsKnownHoliday, CelebratesEaster {
   NEW_YEAR(1, 1),
   LABOUR_DAY(5, 1),
   NATIONAL_DAY(7, 21),

@@ -1,16 +1,22 @@
 package com.bankholiday;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 
-public interface CelebratesEaster {
+public interface CelebratesEaster extends HasReligiousHolidays {
 
-  static List<LocalDate> easterDependentHolidays(int year) {
+  @Override
+  default Set<LocalDate> religiousHolidays(int year) {
+    return easterDependentHolidays(year);
+  }
+
+  static Set<LocalDate> easterDependentHolidays(int year) {
     LocalDate whitMonday = calculateEasterSunday(year).plusDays(50);
     LocalDate easterMonday = calculateEasterSunday(year).plusDays(1);
     LocalDate ascension = calculateEasterSunday(year).plusDays(39);
-    return List.of(whitMonday, easterMonday, ascension);
+    return Set.of(whitMonday, easterMonday, ascension);
   }
+
   static LocalDate calculateEasterSunday(int currentYear) {
     float locationInMetonicCycle = currentYear % 19;
     float numOfLeapDaysJulianCal = currentYear % 4;

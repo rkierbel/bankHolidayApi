@@ -1,46 +1,22 @@
 package com.bankholiday;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public final class HolidayGenerator {
 
-  Set<LocalDate> generateHolidays(IsKnownCountry country, int year) {
+  static Set<LocalDate> generateHolidays(IsKnownHoliday country, int year) {
+    Set<LocalDate> foundHolidays =
+            Arrays.stream(country.values())
+                    .map(v -> v.date(year))
+                    .collect(Collectors.toSet());
 
-    return Arrays.stream(country.values())
-            .map(v -> v.date(year))
-            .collect(Collectors.toSet());
+    if (country instanceof HasReligiousHolidays c) {
+      foundHolidays.addAll(c.religiousHolidays(year));
+    }
+
+    return foundHolidays;
   }
-
-  public static <T extends IsKnownCountry> boolean
-  isAPublicHolidayEve(Class<T> forCountry, LocalDateTime serviceDateTime) {
-
-    return findPublicHoliday(
-            forCountry,
-            serviceDateTime.toLocalDate().atStartOfDay().plusDays(1))
-            .isPresent();
-  }
-
-  public static <T extends IsKnownCountry> boolean
-  isAPublicHoliday(Class<T> forCountry, LocalDateTime serviceDateTime) {
-    Optional<LocalDate> aPublicHoliday = findPublicHoliday(forCountry, serviceDateTime);
-
-    return aPublicHoliday.isPresent();
-  }
-
-  public static <T extends IsKnownCountry> Optional<LocalDate>
-  findPublicHoliday(Class<T> forCountry, LocalDateTime serviceDateTime) {
-
-    /*return cache.getAllHolidays().stream()
-            .filter(publicHoliday -> serviceDateTime.toLocalDate().equals(publicHoliday))
-            .findFirst();*/
-    return null;
-  }
-
 }
