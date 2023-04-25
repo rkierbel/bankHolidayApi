@@ -1,7 +1,7 @@
 package com.bankholiday.util;
 
 
-import com.bankholiday.holiday.IsKnownHoliday;
+import com.bankholiday.country.IsKnownCountry;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -10,7 +10,7 @@ import java.util.Optional;
 public class HolidayFinder {
 
   public static boolean
-  isAPublicHolidayEve(IsKnownHoliday perCountry,
+  isAPublicHolidayEve(IsKnownCountry perCountry,
                       LocalDateTime forDateTime) {
 
     return findPublicHoliday(
@@ -20,7 +20,7 @@ public class HolidayFinder {
   }
 
   public static boolean
-  isAPublicHoliday(IsKnownHoliday perCountry,
+  isAPublicHoliday(IsKnownCountry perCountry,
                    LocalDateTime forDateTime) {
     Optional<LocalDate> aPublicHoliday = findPublicHoliday(perCountry, forDateTime);
 
@@ -28,7 +28,7 @@ public class HolidayFinder {
   }
 
   public static Optional<LocalDate>
-  findPublicHoliday(IsKnownHoliday perCountry,
+  findPublicHoliday(IsKnownCountry perCountry,
                     LocalDateTime forDateTime) {
 
     return HolidayGenerator.generateHolidays(
