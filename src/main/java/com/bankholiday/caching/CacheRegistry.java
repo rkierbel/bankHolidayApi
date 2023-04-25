@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-public class CacheRegistry {
+public abstract class CacheRegistry {
 
   private static final List<HolidayCache> registry = new ArrayList<>(Collections.emptyList());
 
