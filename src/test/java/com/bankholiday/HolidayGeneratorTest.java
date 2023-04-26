@@ -1,7 +1,7 @@
 package com.bankholiday;
 
 import com.bankholiday.country.Belgium;
-import com.bankholiday.util.HolidayGenerator;
+import com.bankholiday.holiday.HolidayGenerator;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -18,6 +18,7 @@ public class HolidayGeneratorTest {
     Set<LocalDate> holidaysForBelgium2023 =
             HolidayGenerator.generateHolidays(Belgium.instance(), 2023);
     int expectedNumberOfHolidays = 13;
+
     assertEquals(
             expectedNumberOfHolidays,
             holidaysForBelgium2023.size());

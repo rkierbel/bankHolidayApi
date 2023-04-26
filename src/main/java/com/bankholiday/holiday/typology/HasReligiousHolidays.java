@@ -1,4 +1,4 @@
-package com.bankholiday.holiday;
+package com.bankholiday.holiday.typology;
 
 import java.time.LocalDate;
 import java.util.Set;

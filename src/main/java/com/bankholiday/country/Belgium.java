@@ -1,6 +1,6 @@
 package com.bankholiday.country;
 
-import com.bankholiday.holiday.CelebratesEaster;
+import com.bankholiday.holiday.typology.CelebratesEaster;
 import com.bankholiday.holiday.IsKnownHoliday;
 import com.bankholiday.holiday.percountry.BelgianHoliday;
 

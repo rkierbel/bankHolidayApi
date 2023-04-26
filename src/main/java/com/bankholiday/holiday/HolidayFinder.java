@@ -1,4 +1,4 @@
-package com.bankholiday.util;
+package com.bankholiday.holiday;
 
 
 import com.bankholiday.country.IsKnownCountry;

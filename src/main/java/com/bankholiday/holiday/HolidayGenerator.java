@@ -1,9 +1,9 @@
-package com.bankholiday.util;
+package com.bankholiday.holiday;
 
 import com.bankholiday.caching.CacheRegistry;
 import com.bankholiday.caching.HolidayCache;
 import com.bankholiday.country.IsKnownCountry;
-import com.bankholiday.holiday.HasReligiousHolidays;
+import com.bankholiday.holiday.typology.HasReligiousHolidays;
 
 import java.time.LocalDate;
 import java.util.Arrays;
