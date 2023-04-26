@@ -21,7 +21,7 @@ public class HolidayCache {
     return new HolidayCache(forCountry);
   }
 
-  public void cache(int year, Set<LocalDate> holidays) {
+  public void cacheForYear(int year, Set<LocalDate> holidays) {
     holidaysPerYear.computeIfAbsent(year, k -> holidays);
   }
 

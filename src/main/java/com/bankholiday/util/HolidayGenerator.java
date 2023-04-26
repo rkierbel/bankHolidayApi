@@ -13,18 +13,18 @@ import java.util.stream.Collectors;
 
 public final class HolidayGenerator {
 
-  static Set<LocalDate> generateHolidays(IsKnownCountry country, int year) {
-    HolidayCache forCountry = CacheRegistry.getOrCreateForCountry(country);
-    Set<LocalDate> holidaysForYear = forCountry.fromCachePer(year);
+  public static Set<LocalDate> generateHolidays(IsKnownCountry country, int year) {
+    HolidayCache cached = CacheRegistry.getOrCreateForCountry(country);
+    Set<LocalDate> holidaysForYear = cached.fromCachePer(year);
 
     if (holidaysForYear.equals(Collections.emptySet())) {
-      holidaysForYear = Arrays.stream(country.holidays().values())
+      holidaysForYear = Arrays.stream(cached.country().holidays())
               .map(v -> v.date(year))
               .collect(Collectors.toSet());
-      if (country instanceof HasReligiousHolidays c) {
+      if (cached.country() instanceof HasReligiousHolidays c) {
         holidaysForYear.addAll(c.religiousHolidays(year));
       }
-      forCountry.cache(year, holidaysForYear);
+      cached.cacheForYear(year, holidaysForYear);
     }
 
     return holidaysForYear;

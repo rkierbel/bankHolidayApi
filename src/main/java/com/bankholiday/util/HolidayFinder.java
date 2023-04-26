@@ -31,8 +31,7 @@ public class HolidayFinder {
   findPublicHoliday(IsKnownCountry perCountry,
                     LocalDateTime forDateTime) {
 
-    return HolidayGenerator.generateHolidays(
-                    perCountry, forDateTime.getYear())
+    return HolidayGenerator.generateHolidays(perCountry, forDateTime.getYear())
             .stream()
             .filter(holiday -> forDateTime.toLocalDate().equals(holiday))
             .findFirst();

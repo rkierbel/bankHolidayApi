@@ -6,5 +6,5 @@ public interface IsKnownCountry {
 
   String name();
 
-  IsKnownHoliday holidays();
+  IsKnownHoliday[] holidays();
 }
