@@ -18,13 +18,21 @@ public final class HolidayGenerator {
     Set<LocalDate> holidaysForYear = cached.fromCachePer(year);
 
     if (holidaysForYear.equals(Collections.emptySet())) {
-      holidaysForYear = Arrays.stream(cached.country().holidays())
-              .map(v -> v.date(year))
-              .collect(Collectors.toSet());
-      if (cached.country() instanceof HasReligiousHolidays c) {
-        holidaysForYear.addAll(c.religiousHolidays(year));
-      }
+      holidaysForYear = generate(year, cached);
       cached.cacheForYear(year, holidaysForYear);
+    }
+
+    return holidaysForYear;
+  }
+
+  private static Set<LocalDate> generate(int year, HolidayCache cached) {
+    Set<LocalDate> holidaysForYear =
+            Arrays.stream(cached.country().holidays())
+                    .map(v -> v.date(year))
+                    .collect(Collectors.toSet());
+
+    if (cached.country() instanceof HasReligiousHolidays c) {
+      holidaysForYear.addAll(c.religiousHolidays(year));
     }
 
     return holidaysForYear;
