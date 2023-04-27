@@ -19,7 +19,6 @@ public class HolidayCache {
     this.holidaysPerYear = new HashMap<>();
   }
 
-
   public static HolidayCache create(IsKnownCountry cachedCountry) {
     return new HolidayCache(cachedCountry);
   }
