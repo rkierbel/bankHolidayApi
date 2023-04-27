@@ -15,7 +15,7 @@ public final class HolidayGenerator {
 
   public static Set<LocalDate> generateHolidays(IsKnownCountry country, int year) {
     HolidayCache cached = CacheRegistry.getOrCreateForCountry(country);
-    Set<LocalDate> holidaysForYear = cached.fromCachePer(year);
+    Set<LocalDate> holidaysForYear = cached.getForYear(year);
 
     if (holidaysForYear.equals(Collections.emptySet())) {
       holidaysForYear = generate(year, cached);

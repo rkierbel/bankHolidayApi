@@ -25,7 +25,7 @@ public class HolidayCache {
     holidaysPerYear.computeIfAbsent(year, k -> holidays);
   }
 
-  public Set<LocalDate> fromCachePer(int year) {
+  public Set<LocalDate> getForYear(int year) {
     //no risk of NullPointerException since HashMap permits null keys
     return holidaysPerYear.getOrDefault(year, Collections.emptySet());
   }
