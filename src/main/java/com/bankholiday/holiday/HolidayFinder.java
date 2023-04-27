@@ -1,6 +1,8 @@
 package com.bankholiday.holiday;
 
 
+import com.bankholiday.caching.CacheRegistry;
+import com.bankholiday.caching.HolidayCache;
 import com.bankholiday.country.IsKnownCountry;
 
 import java.time.LocalDate;
@@ -27,13 +29,13 @@ public class HolidayFinder {
     return aPublicHoliday.isPresent();
   }
 
+  //TODO -> year not cached ? generate
   public static Optional<LocalDate>
-  findPublicHoliday(IsKnownCountry perCountry,
-                    LocalDateTime forDateTime) {
-
-    return HolidayGenerator.generateHolidays(perCountry, forDateTime.getYear())
-            .stream()
-            .filter(holiday -> forDateTime.toLocalDate().equals(holiday))
+  findPublicHoliday(IsKnownCountry country,
+                    LocalDateTime dateTime) {
+    HolidayCache cacheForCountry = CacheRegistry.getOrCreateForCountry(country);
+    return cacheForCountry
+            .getForYear(dateTime.getYear()).stream()
             .findFirst();
   }
 }
