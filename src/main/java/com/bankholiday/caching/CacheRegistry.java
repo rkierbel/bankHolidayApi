@@ -12,10 +12,10 @@ public abstract class CacheRegistry {
   private static final List<HolidayCache> registry = new ArrayList<>(Collections.emptyList());
 
   public static HolidayCache getOrCreateForCountry(IsKnownCountry country) {
-    Optional<HolidayCache> found = getByCountry(country);
+    Optional<HolidayCache> cacheForCountry = getByCountry(country);
 
-    if (found.isPresent()) {
-      return found.get();
+    if (cacheForCountry.isPresent()) {
+      return cacheForCountry.get();
     } else {
       HolidayCache newCache = HolidayCache.create(country);
       registry.add(newCache);
