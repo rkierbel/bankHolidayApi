@@ -29,13 +29,13 @@ public class HolidayFinder {
     return aPublicHoliday.isPresent();
   }
 
-  //TODO -> year not cached ? generate
   public static Optional<LocalDate>
   findPublicHoliday(IsKnownCountry country,
                     LocalDateTime dateTime) {
     HolidayCache cacheForCountry = CacheRegistry.getOrCreateForCountry(country);
+
     return cacheForCountry
-            .getForYear(dateTime.getYear()).stream()
+            .getOrCreateForYear(dateTime.getYear()).stream()
             .findFirst();
   }
 }

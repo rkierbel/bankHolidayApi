@@ -23,6 +23,11 @@ public abstract class CacheRegistry {
     }
   }
 
+  public static void perCountryCacheForYear(HolidayCache cacheForCountry,
+                                            int year) {
+    cacheForCountry.getOrCreateForYear(year);
+  }
+
   private static Optional<HolidayCache> getByCountry(IsKnownCountry country) {
     return registry.stream()
             .filter(hc -> hc.country().name().equals(country.name()))
