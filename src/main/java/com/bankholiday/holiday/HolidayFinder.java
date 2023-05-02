@@ -25,7 +25,6 @@ public class HolidayFinder {
   isAPublicHoliday(IsKnownCountry perCountry,
                    LocalDateTime forDateTime) {
     Optional<LocalDate> aPublicHoliday = findPublicHoliday(perCountry, forDateTime);
-
     return aPublicHoliday.isPresent();
   }
 
@@ -36,6 +35,7 @@ public class HolidayFinder {
 
     return cacheForCountry
             .getOrCreateForYear(dateTime.getYear()).stream()
+            .filter(dateTime.toLocalDate()::equals)
             .findFirst();
   }
 }
