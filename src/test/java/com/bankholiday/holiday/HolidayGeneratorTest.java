@@ -1,4 +1,4 @@
-package com.bankholiday;
+package com.bankholiday.holiday;
 
 import com.bankholiday.country.Belgium;
 import com.bankholiday.holiday.HolidayGenerator;

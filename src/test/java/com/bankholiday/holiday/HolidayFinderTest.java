@@ -31,7 +31,4 @@ class HolidayFinderTest {
             Belgium.instance(),
             LocalDateTime.of(2023, 4, 10, 10, 0)));
   }
-
-
-
 }

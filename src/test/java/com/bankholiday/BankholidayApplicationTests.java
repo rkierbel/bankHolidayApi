@@ -9,5 +9,4 @@ class BankholidayApplicationTests {
   @Test
   void contextLoads() {
   }
-
 }
