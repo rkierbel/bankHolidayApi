@@ -26,16 +26,16 @@ public class HolidayCache {
   public Set<LocalDate> getOrCreateForYear(int year) {
     Set<LocalDate> holidays =
             Arrays.stream(cachedCountry.holidays())
-                    .map(h -> h.date(year))
+                    .map(holiday -> holiday.date(year))
                     .collect(Collectors.toSet());
 
-    if (cachedCountry instanceof HasReligiousHolidays c) {
-      holidays.addAll(c.religiousHolidays(year));
+    if (cachedCountry instanceof HasReligiousHolidays country) {
+      holidays.addAll(country.religiousHolidays(year));
     }
 
     return holidaysPerYear.computeIfAbsent(
             year,
-            k -> holidays);
+            value -> holidays);
   }
 
   public IsKnownCountry country() {
